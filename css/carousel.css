@@ -1,0 +1,85 @@
+/* Styles for the main carousel container (used by Slick) */
+.carousel {
+  padding: 10px 0; /* 캐러셀 상하 여백 */
+  /* Slick은 내부적으로 .slick-track 요소에 flex를 사용하므로, .carousel 자체에 display:flex는 불필요할 수 있습니다. */
+  /* overflow, scroll-behavior, gap 등은 Slick 플러그인이 관리합니다. */
+}
+
+/* Spacing for individual items within the Slick carousel.
+   Slick wraps each item (e.g., .popular-card) in a .slick-slide div. */
+.slick-slide {
+  margin: 0 8px; /* 카드 사이의 좌우 간격 */
+}
+
+/*
+   캐러셀 내의 카드(.popular-card) 스타일링.
+   모든 카드가 동일한 높이를 갖도록 하고, 내부 요소 정렬을 위함.
+   .popular-card의 기본 스타일은 popular.css에 정의되어 있을 것으로 예상됩니다.
+*/
+.carousel .popular-card,
+.carousel .popular-item { /* .popular-item 추가 */
+  height: 100%; /* .slick-slide 높이에 카드를 꽉 채움 */
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel .popular-card img,
+.carousel .popular-item img { /* .popular-item img 추가 */
+  flex-shrink: 0; /* 카드의 내용이 많아도 이미지가 줄어들지 않도록 함 */
+  width: 100%; /* 부모 요소(.popular-card) 너비에 맞춤 */
+  height: 180px; /* 일정한 높이 지정 (popular.css와 동일하게 또는 다르게 설정 가능) */
+  object-fit: cover; /* 이미지가 비율을 유지하면서 컨테이너를 채우도록 함 */
+}
+
+.carousel .popular-card .recipe-name,
+.carousel .popular-item .recipe-name { /* .popular-item .recipe-name 추가 */
+  margin-top: auto; /* 카드가 flex-column일 때, 레시피 이름을 하단으로 밀어 정렬 (내용 높이가 다를 경우 유용) */
+}
+
+
+/* --- Slick Carousel UI Customizations (선택 사항) --- */
+
+/* Arrow styling (Slick 기본 테마를 확장/덮어쓰기) */
+.slick-prev,
+.slick-next {
+  z-index: 10;
+  width: 35px; /* 화살표 버튼 크기 */
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick'; /* slick-theme.css에 정의된 폰트 사용 */
+  font-size: 18px; /* 화살표 아이콘 크기 */
+  color: #58a27c; /* 화살표 아이콘 색상 */
+  opacity: 0.9;
+}
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  opacity: 1;
+}
+.slick-prev {
+  left: 5px; /* 캐러셀 내부 좌측에 위치 */
+}
+.slick-next {
+  right: 5px; /* 캐러셀 내부 우측에 위치 */
+}
+
+/* Dot styling (Slick 기본 테마를 확장/덮어쓰기) */
+.slick-dots {
+  position: relative; /* 캐러셀 콘텐츠 아래에 자연스럽게 위치하도록 변경 */
+  bottom: auto;
+  margin-top: 20px; /* 캐러셀과 점들 사이의 간격 */
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #ccc; /* 비활성 점 색상 */
+  opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #58a27c; /* 활성 점 색상 */
+}

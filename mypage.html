@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이 페이지 - CookBook</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mypage.css"> <!-- 마이페이지 고유 CSS (필요시 생성) -->
+    <style>
+        /* 임시 스타일 - css/mypage.css 로 옮기는 것을 권장 */
+        .mypage-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .mypage-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .favorites-list {
+            list-style: none;
+            padding: 0;
+        }
+        .favorites-list li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .favorites-list li:last-child {
+            border-bottom: none;
+        }
+        .favorites-list a {
+            text-decoration: none;
+            color: #58a27c;
+            font-weight: 500;
+        }
+        .favorites-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">CookBook</div>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="categories.html">Categories</a>
+    <a href="#">Featured</a>
+    <a href="#">Favorites</a>
+    <!-- 로그인/로그아웃 및 마이페이지 링크는 auth.js에서 동적으로 처리 -->
+    <a href="login.html" id="login-link">Login</a>
+  </nav>
+  <button class="hamburger-menu" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+</header>
+
+<main>
+    <div class="mypage-container">
+        <h1>마이 페이지</h1>
+        <section id="user-info-section">
+            <h2 id="nickname-display"></h2>
+        </section>
+        <section id="favorites-section">
+            <h2>즐겨찾기한 레시피</h2>
+            <ul id="favorites-list" class="favorites-list">
+                <!-- 즐겨찾기 목록이 여기에 동적으로 추가됩니다. -->
+            </ul>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 CookBook. All rights reserved.</p>
+</footer>
+
+<script src="js/recipe.js"></script> <!-- recipes 객체 접근을 위해 필요 -->
+<script src="js/auth.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/mypage.js"></script> <!-- 마이페이지 기능 JS (필요시 생성) -->
+
+</body>
+</html>

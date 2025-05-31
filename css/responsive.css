@@ -1,0 +1,197 @@
+@media (max-width: 768px) {
+    header.navbar {
+        /* 로고와 햄버거 버튼을 가로로 정렬하고 양 끝으로 배치 */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px; /* 패딩 조정 */
+    }
+
+    /* 햄버거 메뉴 버튼 (HTML에 <button class="hamburger-menu">☰</button> 등이 있다고 가정) */
+    /* 평소에는 숨겨져 있다가 이 미디어쿼리에서 보이도록 설정해야 합니다. */
+    /* 예를 들어, 기본 CSS(navbar.css 등)에 .hamburger-menu { display: none; } 추가 */
+    .hamburger-menu {
+        display: block; /* 모바일에서 보이도록 함 */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    nav.menu {
+        display: none; /* 기본적으로 메뉴 숨김 */
+        flex-direction: column;
+        gap: 15px; /* 메뉴 아이템 간 간격 조정 */
+        position: absolute; /* 화면 전체를 덮거나 특정 위치에 고정 */
+        top: 60px; /* 헤더 높이에 따라 조정 (대략적인 값) */
+        left: 0;
+        right: 0;
+        background-color: #4CAF50; /* 헤더 배경색과 동일하게 또는 다르게 */
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 998; /* 헤더(999)보다는 아래, 다른 콘텐츠보다는 위 */
+    }
+
+    /* JavaScript로 .menu-open 클래스가 nav.menu에 추가될 때 메뉴를 보여줌 */
+    nav.menu.menu-open {
+        display: flex;
+    }
+
+    nav.menu a { /* 모바일 메뉴 링크 스타일 */
+        padding: 10px 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    nav.menu a:last-child {
+        border-bottom: none;
+    }
+
+    main {
+        padding: 20px 10px; /* 상단 패딩을 줄여 메뉴와 겹치지 않도록 또는 시각적 조정 */
+    }
+
+    .banner-text h1 {
+        font-size: 28px; /* 가독성을 위해 약간 더 줄임 */
+    }
+
+    .banner-text p {
+        font-size: 15px; /* 가독성을 위해 약간 더 줄임 */
+    }
+
+    .photo-gallery {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px; /* 좌우 패딩 추가 */
+    }
+
+    .photo-card {
+        min-width: 90%; /* 화면 너비에 더 가깝게 설정 */
+        height: auto;
+    }
+
+    .photo-card img {
+        height: auto;
+        max-height: 250px; /* 이미지 높이 약간 줄임 */
+    }
+
+    /* 카테고리 페이지 배너 (categories.css 관련) */
+    .category-banner { /* from categories.css */
+        height: 200px; /* 모바일에서 배너 높이 축소 */
+        margin-bottom: 30px;
+    }
+
+    /* 검색창 반응형 스타일 (common.css 관련) */
+    #searchForm {
+        flex-direction: column; /* 검색 입력창과 버튼을 세로로 쌓음 */
+        align-items: stretch; /* 내부 요소들이 꽉 차도록 */
+        padding: 10px;
+    }
+    #searchInput {
+        width: 100%; /* 부모 요소 너비에 맞춤 (box-sizing: border-box 필요) */
+        margin-bottom: 10px; /* 버튼과의 간격 */
+    }
+    #searchButton {
+        width: 100%; /* 버튼도 꽉 차게 */
+    }
+
+    /* 레시피 카드 리스트 (category-result.css 관련) */
+    .recipe-list {
+        grid-template-columns: 1fr; /* 모바일에서는 항상 1열로 표시 */
+        gap: 16px;
+        padding: 10px;
+    }
+
+    /* 카테고리 카드 (categories.css 관련) */
+    /* .category-container는 flex-wrap: wrap과 justify-content: center를 사용하므로,
+       카드 너비를 조정하면 자동으로 스택됩니다. */
+    .category-card { /* from categories.css */
+        width: 90%; /* 모바일에서 카드 너비를 넓혀 한 줄에 하나씩 보이도록 유도 */
+        max-width: 380px; /* 너무 넓어지지 않도록 최대 너비 설정 */
+        margin-left: auto;
+        margin-right: auto; /* 중앙 정렬 효과 (부모가 flex justify-content:center 일 경우 불필요할 수 있음) */
+    }
+
+    /* 인기 레시피 섹션 (popular.css 관련) */
+    .popular-recipes { /* from popular.css */
+        padding: 30px 0; /* 상하 패딩 조정 */
+    }
+    .popular-container { /* from popular.css */
+        flex-direction: column; /* 가로 스크롤 대신 세로로 쌓음 */
+        align-items: center;    /* 중앙 정렬 */
+        overflow-x: visible;    /* 가로 스크롤 제거 */
+        gap: 20px;              /* 아이템 간 세로 간격 */
+        padding-bottom: 0;      /* 스크롤바 위한 패딩 제거 */
+    }
+    .popular-card { /* from popular.css */
+        width: 90%;             /* 카드 너비 조정 */
+        max-width: 350px;       /* 최대 너비 설정 */
+        padding: 20px;          /* .popular-item과 패딩 통일 (box-sizing: border-box 가정) */
+        height: auto;           /* 높이 자동 조정 */
+        flex: 0 1 auto;         /* flex-basis 초기화 */
+        box-sizing: border-box; /* .popular-item과 일관성을 위해 명시 (이미 popular.css에 있을 수 있음) */
+    }
+    .popular-card img { /* from popular.css */
+        width: 100%;            /* 이미지 너비 100% */
+        height: 180px;          /* 이미지 높이 고정 또는 aspect-ratio 사용 고려 */
+        object-fit: cover;      /* 이미지 비율 유지하며 채우기 */
+        border-radius: 8px;     /* .popular-item img와 테두리 둥글기 통일 */
+    }
+
+    /* 새로운 레시피 섹션 (new.css 관련) */
+    .popular-section { /* from new.css - 데스크톱에서 고정 너비였던 것 해제 */
+        width: auto;
+        margin: 40px 10px; /* 좌우 여백 및 상하 마진 조정 */
+        padding: 0;
+    }
+    /* .popular-section 내부의 .popular-item에만 적용되도록 선택자 특정성 강화 */
+    .popular-section .popular-item { /* from new.css */
+        float: none;            /* float 해제 */
+        width: 90%;             /* 너비 조정 */
+        max-width: 350px;       /* 인기 레시피 카드와 최대 너비 통일 */
+        margin: 0 auto 20px auto; /* new.css의 margin: 1%를 덮어쓰고 중앙 정렬, 하단 마진 추가 */
+    }
+
+    /* Swiper 슬라이더 (slider.css 관련) */
+    .swiper { /* from slider.css */
+        height: 300px; /* 모바일에서 슬라이더 높이 축소 */
+    }
+    .slide-content { /* from slider.css */
+        bottom: 20px;
+        left: 15px; /* 좌우 여백 고려 */
+        right: 15px;
+        padding: 15px;
+        max-width: calc(100% - 30px); /* 내부 콘텐츠가 넘치지 않도록 */
+    }
+    .slide-content h2 { /* from slider.css */
+        font-size: 22px; /* 제목 폰트 크기 축소 */
+        margin-bottom: 8px;
+    }
+    .slide-content p { /* from slider.css */
+        font-size: 14px; /* 본문 폰트 크기 축소 */
+    }
+
+    /* 로그인 컨테이너 (login.css 관련) */
+    .login-container { /* from login.css */
+        margin-top: 60px; /* 상단 여백 축소 */
+        padding: 0 15px; /* 좌우 패딩 추가하여 내용물이 화면 가장자리에 붙지 않도록 */
+    }
+    .login-container input { /* from login.css */
+        width: 100%; /* 입력 필드 너비 100% */
+        box-sizing: border-box; /* 패딩, 테두리 포함한 너비 계산 */
+    }
+
+    /* 푸터 텍스트 크기 및 패딩 조정 */
+    footer {
+        padding: 15px 10px;
+        font-size: 13px;
+    }
+}
+
+/* 데스크탑 뷰에서는 햄버거 버튼 숨기기 */
+/* 이 스타일은 기본 CSS 파일(예: navbar.css)에 있거나, 아래처럼 min-width로 정의할 수 있습니다. */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none;
+    }
+}
