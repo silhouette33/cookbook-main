@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CookBook - 홈</title>
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
   <!-- Slick Carousel CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
@@ -107,6 +104,16 @@
     }
     .footer-links a:hover {
       text-decoration: underline;
+    }
+
+    /* Slick Slider 높이 문제 해결을 위한 스타일 추가 */
+    .swiper .slick-slide {
+      height: 450px; /* 슬라이드 높이를 지정합니다. 기존 슬라이드 이미지에 맞춰 조정하세요. */
+      background-size: cover;
+      background-position: center;
+    }
+    .swiper .slick-list { /* 슬라이더 영역이 보이도록 */
+        overflow: visible; /* 또는 hidden, 필요에 따라 */
     }
   </style>
 </head>
@@ -212,7 +219,6 @@
   </footer>
 
   <!-- ✅ Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Slick Carousel JS -->
