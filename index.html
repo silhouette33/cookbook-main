@@ -69,7 +69,15 @@
     }
 
     .hero-slide-content {
-      text-align: center;
+      /* 기존 .slide-content (from slider.css) 스타일을 히어로 슬라이드에 맞게 재정의 */
+      text-align: center; /* 텍스트 중앙 정렬 유지 */
+      position: absolute; /* 위치 지정 기준 */
+      bottom: 40px; /* 하단에서의 위치는 유지 */
+      left: 50%; /* 화면 가로 중앙으로 이동 */
+      transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 트랜스폼 */
+      max-width: 700px; /* 콘텐츠 최대 너비를 늘려 전체 화면에서 더 잘 보이도록 함 (기존 500px) */
+      /* 필요하다면 padding 값도 조정할 수 있습니다. 예: padding: 30px; */
+      /* background, color, border-radius 등은 slider.css의 .slide-content에서 상속받음 */
     }
     .hero-slide-content h1 {
       font-size: 36px; /* 히어로 슬라이드 제목 크기 */
