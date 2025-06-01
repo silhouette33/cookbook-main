@@ -29,11 +29,16 @@
     background-color: #f9f9f9;
     border-radius: 4px;
 }
-
+#favorites-section h2 {
+    color: black; /* 또는 #000, #000000 */
+}
 .favorites-list > .card:last-child {
     border-bottom: none;
 }
-
+/* 즐겨찾기한 레시피 제목 색상 변경 */
+#favorites-list .card h4 {
+    color: black; /* 또는 #000, #000000 등 검은색을 나타내는 다른 값 */
+}
 .favorites-list .card a {
     text-decoration: none;
     color: inherit; /* 기본 텍스트 색상 상속 */
