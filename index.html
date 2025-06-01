@@ -7,8 +7,9 @@
   <title>CookBook - 홈</title>
 
   <!-- Slick Carousel CSS -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/common.css">
@@ -31,7 +32,8 @@
       max-width: 1200px;
       margin: 0 auto;
       background-color: #fff;
-      padding-bottom: 40px; /* 콘텐츠와 푸터 사이 간격 */
+      padding-bottom: 40px;
+      /* 콘텐츠와 푸터 사이 간격 */
     }
 
     footer {
@@ -48,38 +50,108 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
-      padding: 0 10px; /* 섹션 제목 좌우 여백 */
+      padding: 0 10px;
+      /* 섹션 제목 좌우 여백 */
     }
+
     .section-header h2 {
       margin: 0;
       font-size: 26px;
       color: #333;
     }
+
     .view-more-link {
       font-size: 16px;
       color: #58a27c;
       text-decoration: none;
       font-weight: 500;
     }
+
     .view-more-link:hover {
       text-decoration: underline;
     }
 
+    /* 모바일 환경을 위한 히어로 슬라이드 텍스트 크기 및 레이아웃 조정 */
+    @media (max-width: 768px) {
+      .hero-slide-content {
+        bottom: 30px;
+        /* 모바일에서 하단 간격 조정 */
+        width: 90%;
+        /* 컨테이너 너비를 화면의 90%로 설정 */
+        padding-left: 15px;
+        /* 내부 좌측 패딩 */
+        padding-right: 15px;
+        /* 내부 우측 패딩 */
+        box-sizing: border-box;
+        /* 패딩과 테두리를 너비 계산에 포함 */
+      }
+
+      .hero-slide-content h1 {
+        font-size: 26px;
+        /* 모바일에서 제목 폰트 크기 축소 */
+      }
+
+      .hero-slide-content p {
+        font-size: 15px;
+        /* 모바일에서 본문 폰트 크기 축소 */
+        margin-bottom: 20px;
+        /* 버튼과의 간격 조정 */
+      }
+
+      .hero-slide-content .btn {
+        font-size: 16px;
+        /* 버튼 폰트 크기 조정 */
+        padding: 10px 20px;
+        /* 버튼 패딩 조정 */
+      }
+    }
+
+    .hero-slide-content p {
+      /* 히어로 슬라이드 본문 텍스트 스타일 추가 */
+      font-size: 18px;
+      /* 데스크탑 본문 폰트 크기 */
+      margin-bottom: 25px;
+      /* 버튼과의 간격 */
+      line-height: 1.6;
+      /* 본문 줄간격 */
+    }
+
+    @media (max-width: 480px) {
+      .hero-slide-content h1 {
+        font-size: 20px;
+        /* 더 작은 화면에서 제목 폰트 크기 추가 축소 */
+      }
+
+      .hero-slide-content p {
+        font-size: 13px;
+        /* 더 작은 화면에서 본문 폰트 크기 추가 축소 */
+      }
+    }
+
     .hero-slide-content {
       /* 기존 .slide-content (from slider.css) 스타일을 히어로 슬라이드에 맞게 재정의 */
-      text-align: center; /* 텍스트 중앙 정렬 유지 */
-      position: absolute; /* 위치 지정 기준 */
-      bottom: 40px; /* 하단에서의 위치는 유지 */
-      left: 50%; /* 화면 가로 중앙으로 이동 */
-      transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 트랜스폼 */
-      max-width: 700px; /* 콘텐츠 최대 너비를 늘려 전체 화면에서 더 잘 보이도록 함 (기존 500px) */
+      text-align: center;
+      /* 텍스트 중앙 정렬 유지 */
+      position: absolute;
+      /* 위치 지정 기준 */
+      bottom: 40px;
+      /* 하단에서의 위치는 유지 */
+      left: 50%;
+      /* 화면 가로 중앙으로 이동 */
+      transform: translateX(-50%);
+      /* 정확한 중앙 정렬을 위한 트랜스폼 */
+      max-width: 700px;
+      /* 콘텐츠 최대 너비를 늘려 전체 화면에서 더 잘 보이도록 함 (기존 500px) */
       /* 필요하다면 padding 값도 조정할 수 있습니다. 예: padding: 30px; */
       /* background, color, border-radius 등은 slider.css의 .slide-content에서 상속받음 */
     }
+
     .hero-slide-content h1 {
-      font-size: 36px; /* 히어로 슬라이드 제목 크기 */
+      font-size: 36px;
+      /* 히어로 슬라이드 제목 크기 */
       margin-bottom: 15px;
     }
+
     .hero-slide-content .btn {
       display: inline-block;
       padding: 12px 25px;
@@ -91,17 +163,21 @@
       font-weight: 500;
       transition: background-color 0.3s;
     }
+
     .hero-slide-content .btn:hover {
       background-color: #3b7e5c;
     }
+
     .footer-links {
       margin-bottom: 15px;
     }
+
     .footer-links a {
       color: #555;
       text-decoration: none;
       margin: 0 10px;
     }
+
     .footer-links a:hover {
       text-decoration: underline;
     }
@@ -113,24 +189,33 @@
       background-size: cover;
       background-position: center;
     }
-    .swiper .slick-list { /* 슬라이더의 실제 보이는 영역 */
-        height: 100%; /* 부모(.swiper-wrapper)의 높이(500px)를 따름 */
-        overflow: hidden;
+
+    .swiper .slick-list {
+      /* 슬라이더의 실제 보이는 영역 */
+      height: 100%;
+      /* 부모(.swiper-wrapper)의 높이(500px)를 따름 */
+      overflow: hidden;
     }
-    .swiper .slick-track { /* 슬라이드들을 감싸는 트랙 */
-        height: 100%; /* 부모(.slick-list)의 높이(500px)를 따름 */
+
+    .swiper .slick-track {
+      /* 슬라이드들을 감싸는 트랙 */
+      height: 100%;
+      /* 부모(.slick-list)의 높이(500px)를 따름 */
     }
 
     /* 인기/최신 레시피 캐러셀 페이지네이션 스타일 */
-    .popular-section .slick-carousel { /* #popular-carousel, #latest-carousel */
+    .popular-section .slick-carousel {
+      /* #popular-carousel, #latest-carousel */
       position: relative;
       /* 캐러셀 카드와 점들 사이의 간격을 위해 padding-bottom을 줄 수 있습니다. */
-      padding-bottom: 30px; /* 점들을 위한 공간 확보 */
+      padding-bottom: 30px;
+      /* 점들을 위한 공간 확보 */
     }
 
     .popular-section .slick-dots {
       position: absolute;
-      bottom: 5px; /* 캐러셀 하단에 점들이 위치하도록 조정 */
+      bottom: 5px;
+      /* 캐러셀 하단에 점들이 위치하도록 조정 */
       width: 100%;
       padding: 0;
       margin: 0;
@@ -141,30 +226,41 @@
     .popular-section .slick-dots li {
       position: relative;
       display: inline-block;
-      width: 20px; /* 클릭 영역 확보 */
-      height: 20px; /* 클릭 영역 확보 */
-      margin: 0 3px; /* 점 사이 간격 */
+      width: 20px;
+      /* 클릭 영역 확보 */
+      height: 20px;
+      /* 클릭 영역 확보 */
+      margin: 0 3px;
+      /* 점 사이 간격 */
       padding: 0;
       cursor: pointer;
     }
 
     .popular-section .slick-dots li button {
-      font-size: 0; /* 버튼 내 텍스트 숨김 */
+      font-size: 0;
+      /* 버튼 내 텍스트 숨김 */
       line-height: 0;
       display: block;
       /* 점 크기 및 패딩 조정 */
-      width: 10px;   /* 실제 점의 너비 */
-      height: 10px;  /* 실제 점의 높이 */
-      padding: 5px;  /* 버튼의 클릭 영역을 위한 패딩 */
+      width: 10px;
+      /* 실제 점의 너비 */
+      height: 10px;
+      /* 실제 점의 높이 */
+      padding: 5px;
+      /* 버튼의 클릭 영역을 위한 패딩 */
       cursor: pointer;
       border: 0;
       outline: none;
-      background: #ddd; /* 비활성 점 색상 (기존 #ccc 보다 약간 밝게) */
+      background: #ddd;
+      /* 비활성 점 색상 (기존 #ccc 보다 약간 밝게) */
       border-radius: 50%;
-      transition: background-color 0.3s ease; /* 부드러운 색상 변경 효과 */
+      transition: background-color 0.3s ease;
+      /* 부드러운 색상 변경 효과 */
     }
+
     .popular-section .slick-dots li.slick-active button {
-      background: #3b7e5c; /* 활성 점 색상 (기존 테마색보다 약간 진하게) */
+      background: #3b7e5c;
+      /* 활성 점 색상 (기존 테마색보다 약간 진하게) */
     }
   </style>
 </head>
@@ -187,12 +283,14 @@
     <!-- 🔍 검색창 -->
     <div class="search-bar">
       <form id="searchForm" action="search-result.html" method="GET" style="display: flex; align-items: center;">
-        <select name="mode" id="searchMode" style="margin-right: 8px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+        <select name="mode" id="searchMode"
+          style="margin-right: 8px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
           <option value="name" selected>이름</option>
           <option value="ingredient">재료</option>
           <option value="difficulty">난이도</option>
         </select>
-        <input type="text" id="searchInput" name="query" placeholder="레시피 검색..." style="flex-grow: 1; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" />
+        <input type="text" id="searchInput" name="query" placeholder="레시피 검색..."
+          style="flex-grow: 1; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" />
         <button type="submit" id="searchButton">🔍 검색</button>
       </form>
     </div>
@@ -201,7 +299,8 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <!-- 새로운 Hero 슬라이드 -->
-        <div class="swiper-slide" style="background-image: url('images/slide-main.jpg');"> <!-- slide-main.jpg 이미지 필요 -->
+        <div class="swiper-slide" style="background-image: url('images/slide-main.jpg');">
+          <!-- slide-main.jpg 이미지 필요 -->
           <div class="slide-content hero-slide-content">
             <h1>오늘 뭐 먹지? CookBook에서 찾아보세요!</h1>
             <p>다양하고 맛있는 레시피가 여러분을 기다립니다.</p>
@@ -234,7 +333,10 @@
 
     <!-- 슬라이더와 다음 섹션 사이 간격 추가를 위한 스타일 -->
     <style>
-      .swiper { margin-bottom: 40px; /* 슬라이더 아래 여백 추가 */ }
+      .swiper {
+        margin-bottom: 40px;
+        /* 슬라이더 아래 여백 추가 */
+      }
     </style>
 
     <!-- 🔥 인기 레시피 -->
@@ -286,7 +388,7 @@
     renderRecipes("latest", "latest-carousel");
 
     // Slick Carousel 초기화
-    $(document).ready(function(){
+    $(document).ready(function () {
       $('#popular-carousel').slick({
         slidesToShow: 3, // 한 번에 보여줄 카드 수
         slidesToScroll: 1,

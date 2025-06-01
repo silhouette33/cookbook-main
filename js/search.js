@@ -6,26 +6,23 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
+    const searchModeSelect = document.getElementById("searchMode"); // 검색 모드 select 요소
+
 
   document.getElementById("searchForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-        const query = searchInput.value.trim().toLowerCase(); // 검색어는 소문자로 변환
+        e.preventDefault(); // 기본 form 전송을 막습니다.
 
-    let foundKey = null;
 
-        // 'allRecipesData'는 c:/cookbook-main/js/recipe.js 파일에 정의된 상세 레시피 데이터 객체를 참조합니다.
-        for (const key in allRecipesData) {
-          const title = allRecipesData[key].title.toLowerCase(); // 레시피 제목도 소문자로 변환하여 비교
-          if (query === title) { // 정확히 일치하는 제목 검색
-        foundKey = key;
-        break;
-      }
+  const query = searchInput.value.trim();
+    const mode = searchModeSelect.value;
+
+         if (!query) {
+      alert("검색어를 입력해주세요.");
+      return; // 검색어가 없으면 여기서 중단
     }
+    
 
-    if (foundKey) {
-      window.location.href = `recipe.html?key=${foundKey}`;
-    } else {
-      alert("일치하는 레시피를 찾을 수 없습니다.");
-    }
+    // search-result.html로 검색어와 모드를 query parameter로 전달하여 이동합니다.
+    window.location.href = `search-result.html?mode=${encodeURIComponent(mode)}&query=${encodeURIComponent(query)}`;
   });
 });
