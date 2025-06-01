@@ -1238,11 +1238,19 @@ if (document.getElementById('recipe-title')) {
                         clearInterval(intervalId);
                         timerButton.textContent = `▶️ ${timeInfo.text} 타이머 재개`;
                         isTimerRunning = false;
+                        if (alarmSound && !alarmSound.paused) { // 알람 소리 재생 중이면 중지
+                            alarmSound.pause();
+                            alarmSound.currentTime = 0; // 다음 재생을 위해 처음으로 되돌림
+                        }
                     } else if (timeLeft === 0) { // 타이머 리셋
                         timeLeft = timeInfo.durationInSeconds;
                         timerDisplay.textContent = formatTime(timeLeft);
                         timerDisplay.style.color = ''; // 기본 색상으로
                         timerButton.textContent = `⏱️ ${timeInfo.text} 타이머 시작`;
+                        if (alarmSound && !alarmSound.paused) { // 알람 소리 재생 중이면 중지
+                            alarmSound.pause();
+                            alarmSound.currentTime = 0; // 다음 재생을 위해 처음으로 되돌림
+                        }
                     } else { // 타이머 시작/재개
                         isTimerRunning = true;
                         timerButton.textContent = `⏸️ ${timeInfo.text} 타이머 중지`;
