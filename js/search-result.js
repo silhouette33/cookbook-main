@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (query && resultsContainer) {
         // 'recipes' 객체와 'searchRecipesByCriteria' 함수가 recipe.js에 정의되어 있다고 가정
-        if (typeof recipes !== 'undefined' && typeof searchRecipesByCriteria === 'function') {
-            const searchResults = searchRecipesByCriteria(query, mode, recipes);
+        // 'allRecipesData'는 c:/cookbook-main/js/recipe.js 에 정의된 상세 레시피 데이터입니다.
+        if (typeof allRecipesData !== 'undefined' && typeof searchRecipesByCriteria === 'function') {
+            const searchResults = searchRecipesByCriteria(query, mode, allRecipesData);
 
             if (searchResults.length > 0) {
                 searchResults.forEach(recipe => {

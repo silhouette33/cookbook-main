@@ -1,6 +1,6 @@
 // js/recipe.js
 
-const recipes = {
+const allRecipesData = {
     // --- 한식 ---
     kimchiStew: {
         title: "김치찌개",
@@ -1173,13 +1173,20 @@ if (document.getElementById('recipe-title')) {
     const menu = params.get('menu');
     const key = params.get('key');
     const recipeKey = menu || key;
-    const recipe = recipes[recipeKey];
+    const recipe = allRecipesData[recipeKey];
 
     if (recipe) {
         document.getElementById('recipe-title').textContent = recipe.title;
         document.getElementById('recipe-image').src = recipe.image;
         document.getElementById('recipe-description').textContent = recipe.description;
         
+        // 즐겨찾기 기능: recipe가 유효할 때만 활성화
+        const favoriteButton = document.getElementById("favorite-button");
+        if (favoriteButton) {
+            setupFavoriteButton(favoriteButton, recipeKey);
+        }
+
+
         // 🍳 난이도 표시
         const difficultyElement = document.getElementById('recipe-difficulty');
         if (difficultyElement && recipe.difficulty) {
@@ -1268,40 +1275,60 @@ if (document.getElementById('recipe-title')) {
         });
     } else {
         document.getElementById('recipe-title').textContent = "레시피를 찾을 수 없습니다.";
-    }
-
-    // 즐겨찾기 기능
-    const favoriteButton = document.getElementById("favorite-button");
-    if (favoriteButton) {
-        const user = localStorage.getItem("cookbookUser");
-        const users = JSON.parse(localStorage.getItem("users") || "{}");
-
-        if (!user || !users[user]) {
-            favoriteButton.textContent = "로그인 필요";
-            favoriteButton.disabled = true;
-        } else {
-            const favorites = users[user].favorites || [];
-
-            // 초기 상태
-            if (favorites.includes(recipeKey)) {
-                favoriteButton.textContent = "★ 즐겨찾기";
-            } else {
-                favoriteButton.textContent = "☆ 즐겨찾기";
-            }
-
-            // 클릭 시 토글
-            favoriteButton.addEventListener("click", () => {
-                const index = favorites.indexOf(recipeKey);
-                if (index === -1) {
-                    favorites.push(recipeKey);
-                    favoriteButton.textContent = "★ 즐겨찾기";
-                } else {
-                    favorites.splice(index, 1);
-                    favoriteButton.textContent = "☆ 즐겨찾기";
-                }
-                users[user].favorites = favorites;
-                localStorage.setItem("users", JSON.stringify(users));
-            });
+        // 레시피가 없을 경우 즐겨찾기 버튼 비활성화 또는 숨김
+        const favoriteButton = document.getElementById("favorite-button");
+        if (favoriteButton) {
+            favoriteButton.style.display = 'none';
         }
     }
+}
+
+function setupFavoriteButton(buttonElement, currentRecipeKey) {
+    const user = localStorage.getItem("cookbookUser");
+    let users;
+
+    try {
+        users = JSON.parse(localStorage.getItem("users") || "{}");
+    } catch (e) {
+        console.error("Error parsing 'users' from localStorage:", e);
+        users = {}; // 오류 발생 시 빈 객체로 초기화
+        // localStorage.removeItem("users"); // 손상된 데이터 제거 옵션
+    }
+
+    if (!user || !users[user]) {
+        buttonElement.textContent = "로그인 필요";
+        buttonElement.disabled = true;
+        return;
+    }
+
+    // 버튼 활성화
+    buttonElement.disabled = false;
+    buttonElement.style.display = ''; // 숨겨져 있었다면 다시 보이게
+
+    const favorites = users[user].favorites || [];
+
+    // 초기 버튼 상태 설정
+    if (favorites.includes(currentRecipeKey)) {
+        buttonElement.textContent = "★ 즐겨찾기";
+    } else {
+        buttonElement.textContent = "☆ 즐겨찾기";
+    }
+
+    // 클릭 이벤트 리스너 (기존 리스너가 있다면 중복 방지를 위해 한 번만 추가하도록 개선 가능)
+    // 간단하게 하기 위해 여기서는 매번 설정하지만, 실제로는 addEventListener 중복 호출을 피하는 것이 좋습니다.
+    // 여기서는 페이지 로드 시 한 번만 호출되므로 괜찮습니다.
+    buttonElement.onclick = () => { // addEventListener 대신 onclick으로 단순화 (기존 리스너 제거 효과)
+        const currentFavorites = users[user].favorites || []; // 최신 즐겨찾기 목록 다시 로드
+        const index = currentFavorites.indexOf(currentRecipeKey);
+
+        if (index === -1) { // 즐겨찾기에 없는 경우 추가
+            currentFavorites.push(currentRecipeKey);
+            buttonElement.textContent = "★ 즐겨찾기";
+        } else { // 이미 즐겨찾기에 있는 경우 제거
+            currentFavorites.splice(index, 1);
+            buttonElement.textContent = "☆ 즐겨찾기";
+        }
+        users[user].favorites = currentFavorites;
+        localStorage.setItem("users", JSON.stringify(users));
+    };
 }

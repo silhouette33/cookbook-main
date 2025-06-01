@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     noFavorites.style.display = "none";
 
     favorites.forEach(menuKey => {
-      const recipe = recipes[menuKey];
+      // 'allRecipesData'는 recipe.js 파일에 정의된 상세 레시피 데이터 객체입니다.
+      const recipe = allRecipesData[menuKey];
       if (!recipe) return;
 
       const card = document.createElement("div");

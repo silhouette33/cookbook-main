@@ -1,0 +1,77 @@
+/* mypage.css */
+.mypage-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.mypage-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.favorites-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* 동적으로 생성되는 div.card 스타일 */
+.favorites-list > .card {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex; /* 이미지와 내용을 가로로 배열 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.favorites-list > .card:last-child {
+    border-bottom: none;
+}
+
+.favorites-list .card a {
+    text-decoration: none;
+    color: inherit; /* 기본 텍스트 색상 상속 */
+    display: flex;
+    align-items: center;
+    width: 100%; /* 링크 영역을 카드로 확장 */
+}
+
+.favorites-list .card a:hover {
+    /* 호버 효과 (예: 배경색 변경) */
+    background-color: #f0f0f0;
+}
+
+.favorites-list .card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.favorites-list .card .card-body h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    color: #58a27c; /* 제목 색상 */
+}
+
+.favorites-list .card .card-body p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555; /* 설명 텍스트 색상 */
+    line-height: 1.4;
+}
+
+#no-favorites {
+    text-align: center;
+    color: #777;
+    padding: 20px 0;
+    font-size: 1em;
+}
